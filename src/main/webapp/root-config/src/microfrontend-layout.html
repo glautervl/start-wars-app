@@ -1,7 +1,14 @@
 <single-spa-router>
   <main>
     <nav class="topNav">
-      <application name="@brunopeck/navbar" loader="topNav" error="topNav"></application>
+      <application
+        name="@brunopeck/navbar"
+        loader="topNav"
+        error="topNav"
+      ></application>
     </nav>
+    <route path="/planets">
+      <application name="@brunopeck/planets"></application>
+    </route>
   </main>
 </single-spa-router>
