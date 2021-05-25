@@ -1,5 +1,11 @@
 import React from "react";
+import DrawerMenu from "./DrawerMenu";
+import { BrowserRouter } from "react-router-dom";
 
-export default function Root(props) {
-  return <section>{props.name} is mounted!</section>;
+export default function Root() {
+  return (
+    <BrowserRouter>
+      <DrawerMenu />
+    </BrowserRouter>
+  );
 }

@@ -13,7 +13,7 @@ const routes = constructRoutes(microfrontendLayout, {
   },
   errors: {
     topNav: "<h1>Failed to load topnav</h1>",
-  }
+  },
 });
 const applications = constructApplications({
   routes,
