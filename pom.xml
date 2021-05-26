@@ -22,6 +22,7 @@
         <root-config-src-dir>${project.basedir}/src/main/webapp/root-config</root-config-src-dir>
         <navbar-src-dir>${project.basedir}/src/main/webapp/navbar</navbar-src-dir>
         <planets-src-dir>${project.basedir}/src/main/webapp/planets</planets-src-dir>
+        <people-src-dir>${project.basedir}/src/main/webapp/people</people-src-dir>
     </properties>
     <dependencies>
 <!--        <dependency>
@@ -107,6 +108,7 @@
                         </configuration>
                     </execution>
 
+                    <!-- *********************************** Navbar ******************************************** -->
 
                     <execution>
                         <id>install-frontend-tools-for-navbar</id>
@@ -146,7 +148,7 @@
                             <installDirectory>${project.build.directory}</installDirectory>
                         </configuration>
                     </execution>
-
+                    <!-- *********************************** Planets ******************************************** -->
                     <execution>
                         <id>install-frontend-tools-for-planets</id>
                         <goals>
@@ -182,6 +184,45 @@
                         <configuration>
                             <arguments>build</arguments>
                             <workingDirectory>${planets-src-dir}</workingDirectory>
+                            <installDirectory>${project.build.directory}</installDirectory>
+                        </configuration>
+                    </execution>
+                    <!-- *********************************** People ******************************************** -->
+                    <execution>
+                        <id>install-frontend-tools-for-people</id>
+                        <goals>
+                            <goal>install-node-and-yarn</goal>
+                        </goals>
+
+                        <configuration>
+                            <nodeVersion>${node.version}</nodeVersion>
+                            <yarnVersion>${yarn.version}</yarnVersion>
+                            <workingDirectory>${people-src-dir}</workingDirectory>
+                            <installDirectory>${project.build.directory}</installDirectory>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>yarn-install-for-people</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                            <workingDirectory>${people-src-dir}</workingDirectory>
+                            <installDirectory>${project.build.directory}</installDirectory>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>build-frontend-for-people</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <arguments>build</arguments>
+                            <workingDirectory>${people-src-dir}</workingDirectory>
                             <installDirectory>${project.build.directory}</installDirectory>
                         </configuration>
                     </execution>
@@ -237,6 +278,23 @@
                             <resources>
                                 <resource>
                                     <directory>${planets-src-dir}/dist</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+
+                    </execution>
+                    <execution>
+                        <id>build-people</id>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/public/people</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${people-src-dir}/dist</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
