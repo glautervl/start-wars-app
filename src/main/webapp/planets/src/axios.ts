@@ -1,3 +1,3 @@
 import axios from "axios";
 
-export default axios.create({ baseURL: "http://localhost:8080/api/planets" });
+export default axios.create({ baseURL: "http://localhost:8080/api/planets/" });
