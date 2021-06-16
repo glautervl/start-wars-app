@@ -1,7 +1,7 @@
 import React from "react";
 
-import Planets from "./Planets";
+import Routes from "./Routes";
 
-export default function Root() {
-  return <Planets />;
-}
+const Root: React.FunctionComponent<{}> = () => <Routes />;
+
+export default Root;

@@ -1,17 +1,17 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import PeopleList from "./People";
+import Planets from "./Planets";
 import About from "./About";
 
 const Routes = () => (
-  <BrowserRouter basename="people">
+  <BrowserRouter basename="planets">
     <Switch>
       <Route exact path="/about">
         <About />
       </Route>
       <Route exact path="/">
-        <PeopleList />
+        <Planets />
       </Route>
     </Switch>
   </BrowserRouter>

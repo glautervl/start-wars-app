@@ -36,6 +36,15 @@ const DrawerMenu: React.FunctionComponent<{}> = () => {
         </ListItem>
       </Link>
 
+      <Link to="/planets/about">
+        <ListItem button>
+          <ListItemIcon>
+            <PublicIcon />
+          </ListItemIcon>
+          <ListItemText primary="Planets About" />
+        </ListItem>
+      </Link>
+
       <Link to="/people">
         <ListItem button>
           <ListItemIcon>
