@@ -2,7 +2,7 @@
   "name": "@brunopeck/navbar",
   "license": "gpl-2.0",
   "scripts": {
-    "start": "webpack serve --port 9001 --env isLocal",
+    "start": "webpack serve --env isLocal",
     "start:standalone": "webpack serve --env standalone",
     "build": "webpack --mode=production",
     "analyze": "webpack --mode=production --env analyze",

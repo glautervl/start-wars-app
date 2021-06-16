@@ -1,8 +1,7 @@
 import React from "react";
-import PeopleList from "./People";
 
-function App() {
-  return <PeopleList />;
-}
+import Routes from "./Routes";
+
+const App: React.FunctionComponent<{}> = () => <Routes />;
 
 export default App;

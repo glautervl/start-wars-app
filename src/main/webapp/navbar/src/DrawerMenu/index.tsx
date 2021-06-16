@@ -12,72 +12,59 @@ import PublicIcon from "@material-ui/icons/Public";
 import PeopleIcon from "@material-ui/icons/People";
 import MenuIcon from "@material-ui/icons/Menu";
 
-const ANCHOR = "left";
+export type DrawerToggle = (
+  event: React.KeyboardEvent | React.MouseEvent
+) => void;
 
-const DrawerMenu = () => {
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
+const DrawerMenu: React.FunctionComponent<{}> = () => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-
-      setState({ ...state, left: open });
+    (open: boolean): DrawerToggle =>
+    (): void => {
+      setIsOpen(open);
     };
 
   const list = () => (
-    <div
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        <Link to="/planets">
-          <ListItem button>
-            <ListItemIcon>
-              <PublicIcon />
-            </ListItemIcon>
-            <ListItemText primary="Planets" />
-          </ListItem>
-        </Link>
+    <List>
+      <Link to="/planets">
+        <ListItem button>
+          <ListItemIcon>
+            <PublicIcon />
+          </ListItemIcon>
+          <ListItemText primary="Planets" />
+        </ListItem>
+      </Link>
 
-        <Link to="/people">
-          <ListItem button>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="People" />
-          </ListItem>
-        </Link>
-      </List>
-    </div>
+      <Link to="/people">
+        <ListItem button>
+          <ListItemIcon>
+            <PeopleIcon />
+          </ListItemIcon>
+          <ListItemText primary="People" />
+        </ListItem>
+      </Link>
+
+      <Link to="/people/about">
+        <ListItem button>
+          <ListItemIcon>
+            <PeopleIcon />
+          </ListItemIcon>
+          <ListItemText primary="People Index" />
+        </ListItem>
+      </Link>
+    </List>
   );
 
   return (
-    <div>
-      <React.Fragment>
-        <Button onClick={toggleDrawer(true)}>
-          <MenuIcon />
-        </Button>
-        <Drawer
-          anchor={ANCHOR}
-          open={state[ANCHOR]}
-          onClose={toggleDrawer(false)}
-        >
-          {list()}
-        </Drawer>
-      </React.Fragment>
-    </div>
+    <>
+      <Button onClick={toggleDrawer(true)}>
+        <MenuIcon />
+      </Button>
+      <Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
+        {list()}
+      </Drawer>
+    </>
   );
 };
 

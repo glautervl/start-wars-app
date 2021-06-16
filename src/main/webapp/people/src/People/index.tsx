@@ -17,6 +17,8 @@ import MuiAlert from "@material-ui/lab/Alert";
 import { PagedResults, People } from "../models";
 import axios from "../axios";
 
+import { Container, StyledLink } from "./styles";
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -96,19 +98,24 @@ const PeopleList: React.FunctionComponent<{}> = () => {
   }
 
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">Name</TableCell>
-            <TableCell align="center">Home World</TableCell>
-            <TableCell align="center">Gender</TableCell>
-            <TableCell align="center">Created</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>{bodyToRender}</TableBody>
-      </Table>
-    </TableContainer>
+    <>
+      <Container>
+        <StyledLink to="/about">About</StyledLink>
+      </Container>
+      <TableContainer component={Paper}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">Name</TableCell>
+              <TableCell align="center">Home World</TableCell>
+              <TableCell align="center">Gender</TableCell>
+              <TableCell align="center">Created</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>{bodyToRender}</TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 };
 
